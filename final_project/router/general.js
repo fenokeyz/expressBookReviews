@@ -15,9 +15,7 @@ public_users.post("/register", (req, res) => {
         });
     }
 
-    const userExists = users.some(user => user.username === username);
-
-    if (userExists) {
+    if (!isValid(username)) {
         return res.status(409).json({
             message: "User already exists"
         });
@@ -94,4 +92,7 @@ public_users.get('/review/:isbn', function (req, res) {
         });
     }
 });
+
+
+
 module.exports.general = public_users;
