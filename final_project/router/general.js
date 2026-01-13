@@ -99,7 +99,7 @@ public_users.get('/review/:isbn', function (req, res) {
 public_users.get("/async/books", async (req, res) => {
     try {
         const response = await axios.get("http://localhost:5000/");
-        return res.status(200).send(JSON.stringify(response.data, null, 4));
+        return res.status(200).json(response.data);
     } catch (error) {
         return res.status(500).json({ message: "Error fetching books" });
     }
